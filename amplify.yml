@@ -3,14 +3,19 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install
+        - node --version || true
+        - npm ci
     build:
       commands:
+        - cd client
         - npm run build
+        - echo "---- ls client/.next ----"
+        - ls -la .next || true
   artifacts:
+    # Amplify will look for the .next folder at repo-root/client/.next
     baseDirectory: client/.next
     files:
       - '**/*'
   cache:
     paths:
-      - node_modules/**/*
+      - client/node_modules/**/*
