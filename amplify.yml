@@ -12,9 +12,9 @@ frontend:
         - ls -la .next || true
   artifacts:
     # Amplify will look for the .next folder at repo-root/client/.next
-    baseDirectory: client/.next
+    baseDirectory: .next
     files:
       - '**/*'
   cache:
     paths:
-      - client/node_modules/**/*
+      - node_modules/**/*
